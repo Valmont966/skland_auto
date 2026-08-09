@@ -101,7 +101,7 @@ def get_bindings(cred, sign_token):
             bindings.append({
                 "appName": app_name,
                 "uid": b["uid"],
-                "channelMasterId": b["channelMasterId"],
+                "gameId": b.get("gameId", b["channelMasterId"]),
                 "nickName": b.get("nickName", "未知"),
                 "channelName": b.get("channelName", ""),
             })
@@ -151,7 +151,7 @@ def run_sign():
     for b in bindings:
         app_name = b["appName"]
         uid = b["uid"]
-        game_id = b["channelMasterId"]
+        game_id = b["gameId"]
         nickname = b["nickName"]
         channel = b["channelName"]
 
